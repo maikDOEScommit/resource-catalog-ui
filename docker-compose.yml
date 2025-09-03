@@ -3,9 +3,10 @@ services:
     build:
       context: ../topic_skill_service_example_fork
       dockerfile: Dockerfile
+    image: "${IMAGE_PREFIX}/topics-api:${VERSION}"
     container_name: topics-api
     ports:
-      - "5000:5000"
+      - "5050:5000"
     networks:
       - app-network
     
@@ -13,6 +14,7 @@ services:
     build:
       context: ../resource_catalog_service_example_fork
       dockerfile: Dockerfile
+    image: "${IMAGE_PREFIX}/resources-api:${VERSION}"
     container_name: resources-api
     ports:
       - "5002:5002"
@@ -23,6 +25,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile 
+    image: "${IMAGE_PREFIX}/resources-frontend:${VERSION}"
     container_name: resources-frontend
     ports:
       - "5173:80"
